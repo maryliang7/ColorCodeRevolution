@@ -15,12 +15,14 @@ export default class Gameview {
   start() {
     this.game.draw(this.ctx);
     this.game.addArrows();
+
     requestAnimationFrame(this.animate.bind(this));
   }
 
   
   animate(time) {
     let delta = time - this.lastTime;
+    
     this.game.moveObjects(delta);
     this.game.draw(this.ctx)
 

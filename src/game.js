@@ -6,14 +6,11 @@ export default class Game {
     this.numColors = numColors;
     this.difficulty = difficulty || 6;
 
-    this.leftArrows = [];
-    this.upArrows = [];
-    this.downArrows = [];
-    this.rightArrows = [];
+    this.arrows = []
     this.staticArrows = new StaticArrow(Game.ARROW_COORDS, this);
 
     this.start()
-
+    this.paused = false;
   }
 
   start() {
@@ -23,29 +20,16 @@ export default class Game {
   addArrows() {
     setInterval(() => {
       this.createArrow();
-    }, 900)
+    }, 500)
 
   }  
 
   createArrow() {
     let type = Game.ARROWS[Math.floor(Math.random()*4)];
-    let color = Game.COLORS[Math.floor(Math.random()*3)];
-    let arrow = new Arrow(color, type, Game.ARROW_COORDS, Game.COLORS_RGB);
+    let color = Game.COLORS[Math.floor(Math.random()*2)];
+    let arrow = new Arrow(color, type, Game.ARROW_COORDS, Game.COLORS_RGB, this);
 
-    switch (type) {
-      case "left":
-        this.leftArrows.push(arrow)
-        break;
-      case "up":
-        this.upArrows.push(arrow)
-        break;
-      case "down":
-        this.downArrows.push(arrow)
-        break;
-      case "right":
-        this.rightArrows.push(arrow)
-        break;
-    }
+    this.arrows.push(arrow);
   }
 
 
@@ -107,17 +91,64 @@ export default class Game {
   }
 
   allObjects() {
-    return this.leftArrows.concat(this.upArrows, this.downArrows, this.rightArrows, this.staticArrows)
+    return this.arrows.concat(this.staticArrows)
   }
 
-  allArrows() {
-    return this.leftArrows.concat(this.upArrows, this.downArrows, this.rightArrows)
+  checkTarget(arrowType, keys) {
+    switch (arrowType) {
+      case "left":
+        this.arrows.forEach(arrow => {
+          if ((arrow.start === Game.ARROW_COORDS.left.x) &&
+              (arrow.horiHeight > 540 && arrow.horiHeight < 635) &&
+              (keys[Game.CKC[arrow.color]] === true)) {
+                this.remove(arrow);
+          } 
+        });
+        break;
+      case "up":
+        this.arrows.forEach(arrow => {
+          if ((arrow.start === Game.ARROW_COORDS.up.x) &&
+              (arrow.vertHeight > 510 && arrow.vertHeight < 585) &&
+              (keys[Game.CKC[arrow.color]] === true)) {
+                this.remove(arrow);
+          } 
+        });
+        break;
+      case "down":
+        this.arrows.forEach(arrow => {
+          if ((arrow.start === Game.ARROW_COORDS.down.x) &&
+              (arrow.vertHeight > 515 && arrow.vertHeight < 610) && 
+              (keys[Game.CKC[arrow.color]] === true)) {
+                this.remove(arrow);
+          } 
+        });
+        break;
+      case "right":
+        this.arrows.forEach(arrow => {
+          if ((arrow.start === Game.ARROW_COORDS.right.x) &&
+              (arrow.horiHeight > 540 && arrow.horiHeight < 635) &&
+              (keys[Game.CKC[arrow.color]] === true)) {
+                this.remove(arrow);
+          } 
+        });
+        break;
+    }
   }
+
 
   moveObjects(delta) {
-    this.allArrows().forEach((object) => {
+    this.arrows.forEach((object) => {
       object.move(delta);
     });
+  }
+
+  remove(object) {
+    this.arrows.splice(this.arrows.indexOf(object), 1);
+  }
+
+  pause() {
+    debugger
+    this.paused = !this.paused;
   }
 }
 
@@ -150,4 +181,10 @@ Game.COLORS_RGB = {
   'blue': 'rgb(138, 241, 234',
   'purple': 'rgb(221, 162, 246)',
   'navy': 'rgb(127, 179, 225)'
+} 
+
+Game.CKC = {
+  'blue': 67,
+  'purple': 88,
+  'navy': 90
 } 
