@@ -1,30 +1,36 @@
 export default class StaticArrow {
-  constructor(game) {
-    this.leftImage = new Image;
-    this.upImage = new Image;
-    this.downImage = new Image;
-    this.rightImage = new Image;
+  constructor(coords, game) {
+    this.coords = coords;
 
-    this.leftImage.src = '../assets/images/left-static-arrow.png';
-    this.upImage.src = '../assets/images/up-static-arrow.png';
-    this.downImage.src = '../assets/images/down-static-arrow.png';
-    this.rightImage.src = '../assets/images/right-static-arrow.png';
+    // this.leftImage = new Image;
+    // this.upImage = new Image;
+    // this.downImage = new Image;
+    // this.rightImage = new Image;
+    this.leftImage = document.getElementById("left-static-arrow")
+    this.upImage = document.getElementById("up-static-arrow")
+    this.downImage = document.getElementById("down-static-arrow")
+    this.rightImage = document.getElementById("right-static-arrow")
+
+    // this.leftImage.src = '../assets/images/left-static-arrow.png';
+    // this.upImage.src = '../assets/images/up-static-arrow.png';
+    // this.downImage.src = '../assets/images/down-static-arrow.png';
+    // this.rightImage.src = '../assets/images/right-static-arrow.png';
     this.game = game;
   }
 
   pressDown(arrow) {
     switch (arrow) {
       case "left":
-        this.leftImage.src = '../assets/images/p-left-static-arrow.png';
+        this.leftImage.src = '../assets/images/empty.png';
         break;
       case "up":
-        this.upImage.src = '../assets/images/p-up-static-arrow.png';
+        this.upImage.src = '../assets/images/empty.png';
         break;
       case "down":
-        this.downImage.src = '../assets/images/p-down-static-arrow.png';
+        this.downImage.src = '../assets/images/empty.png';
         break;
       case "right":
-        this.rightImage.src = '../assets/images/p-right-static-arrow.png';
+        this.rightImage.src = '../assets/images/empty.png';
         break;
     }
   }
@@ -47,21 +53,28 @@ export default class StaticArrow {
   }
 
   draw(ctx) {
-    this.leftImage.onload = () => {
-      ctx.clearRect(250, 550, 75, 75);
-      ctx.drawImage(this.leftImage, 250, 550, 75, 75);
-    }
-    this.upImage.onload = () => {
-      ctx.clearRect(400, 550, 75, 75);
-      ctx.drawImage(this.upImage, 400, 550, 75, 75);
-    }
-    this.downImage.onload = () => {
-      ctx.clearRect(550, 550, 75, 75);
-      ctx.drawImage(this.downImage, 550, 550, 75, 75);
-    }
-    this.rightImage.onload = () => {
-      ctx.clearRect(700, 550, 75, 75);
-      ctx.drawImage(this.rightImage, 700, 550, 75, 75);
-    }
+    // this.leftImage.onload = () => {
+    //   // debugger
+    //   ctx.clearRect(this.coords.left.x, this.coords.left.y, 75, 75);
+    //   ctx.drawImage(this.leftImage, this.coords.left.x, this.coords.left.y, 75, 75);
+    // }
+
+    // this.upImage.onload = () => {
+    //   ctx.clearRect(this.coords.up.x, this.coords.up.y, 75, 75);
+    //   ctx.drawImage(this.upImage, this.coords.up.x, this.coords.up.y, 75, 75);
+    // }
+    // this.downImage.onload = () => {
+    //   ctx.clearRect(this.coords.down.x, this.coords.down.y, 75, 75);
+    //   ctx.drawImage(this.downImage, this.coords.down.x, this.coords.down.y, 75, 75);
+    // }
+    // this.rightImage.onload = () => {
+    //   ctx.clearRect(this.coords.right.x, this.coords.right.y, 75, 75);
+    //   ctx.drawImage(this.rightImage, this.coords.right.x, this.coords.right.y, 75, 75);
+    // }
+
+    ctx.drawImage(this.leftImage, this.coords.left.x, this.coords.left.y, 75, 75);
+    ctx.drawImage(this.upImage, this.coords.up.x, this.coords.up.y, 75, 75);
+    ctx.drawImage(this.downImage, this.coords.down.x, this.coords.down.y, 75, 75);
+    ctx.drawImage(this.rightImage, this.coords.right.x, this.coords.right.y, 75, 75);
   }
 }
