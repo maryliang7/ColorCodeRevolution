@@ -67,14 +67,14 @@ export default class Arrow {
     }
   }
 
-
   move(deltaTime) {
     if (!deltaTime) return;
-    this.horiHeight += 90 / deltaTime;
-    this.vertHeight += 90 / deltaTime;
+    this.horiHeight += 60 / deltaTime;
+    this.vertHeight += 60 / deltaTime;
 
     if (this.horiHeight > 650 || this.vertHeight > 650) {
-      this.remove(this)
+      this.remove(this);
+      this.game.missed();
     }
   }
 

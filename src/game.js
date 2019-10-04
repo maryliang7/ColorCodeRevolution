@@ -1,5 +1,6 @@
 import StaticArrow from "./static_arrow";
 import Arrow from './arrow';
+import { analyze } from 'web-audio-beat-detector';
 
 export default class Game {
   constructor(numColors, difficulty) {
@@ -11,6 +12,7 @@ export default class Game {
 
     this.start()
     this.paused = false;
+    this.miss = false;
   }
 
   start() {
@@ -20,7 +22,7 @@ export default class Game {
   addArrows() {
     setInterval(() => {
       this.createArrow();
-    }, 500)
+    }, 800)
 
   }  
 
@@ -32,61 +34,23 @@ export default class Game {
     this.arrows.push(arrow);
   }
 
-
+  missed() {
+    this.miss = !this.miss
+  }
 
   draw(ctx) {
-    ctx.clearRect(0, 0, 1000, 650);
+    ctx.clearRect(0, 0, 625, 650);
     this.allObjects().forEach(obj => {
       obj.draw(ctx);
     })
-    // ctx.beginPath();
-    // ctx.fillStyle = "rgb(221, 162, 246)"
-    // ctx.moveTo(250, 50);
-    // ctx.lineTo(304, 82);
-    // ctx.lineTo(285, 50);
-    // ctx.lineTo(304, 18);
-    // ctx.closePath();
-    // ctx.fill();
-    // ctx.lineWidth = 2;
-    // ctx.strokeStyle = "rgb(255, 255, 255)";
-    // ctx.stroke();
-
-    // ctx.beginPath();
-    // ctx.fillStyle = 'rgb(127, 179, 225)'
-    // ctx.moveTo(400 + 40, 120);
-    // ctx.lineTo(400 + 8, 120 + 54);
-    // ctx.lineTo(400 + 40, 120 + 35);
-    // ctx.lineTo(400 + 72, 120 + 54);
-    // ctx.closePath();
-    // ctx.fill();
-    // ctx.lineWidth = 2;
-    // ctx.strokeStyle = "rgb(255, 255, 255)";
-    // ctx.stroke();
-
-    // ctx.beginPath();
-    // ctx.fillStyle = 'rgb(221, 162, 246)'
-    // ctx.moveTo(550 + 40, 320 + 54);
-    // ctx.lineTo(550 + 8, 320);
-    // ctx.lineTo(550 + 40, 320 + 20);
-    // ctx.lineTo(550 + 72, 320);
-    // ctx.closePath();
-    // ctx.fill();
-    // ctx.lineWidth = 2;
-    // ctx.strokeStyle = "rgb(255, 255, 255)";
-    // ctx.stroke();
-
-    // ctx.beginPath();
-    // ctx.fillStyle = "rgb(127, 179, 225)"
-    // ctx.moveTo(758, 150);
-    // ctx.lineTo(704, 118);
-    // ctx.lineTo(723, 150);
-    // ctx.lineTo(704, 182);
-    // ctx.closePath();
-    // ctx.fill();
-    // ctx.lineWidth = 2;
-    // ctx.strokeStyle = "rgb(255, 255, 255)";
-    // ctx.stroke();
-
+    let image;
+    if (this.miss) {
+      image = document.getElementById('miss-arrow');
+      this.miss = !this.miss;
+    } else {
+      image = document.getElementById('arrow');
+    }
+    ctx.drawImage(image, 295, 225, 75, 75);
 
   }
 
@@ -154,26 +118,26 @@ export default class Game {
 
 
 Game.DIMS = {
-  x: 1000,
+  x: 600,
   y: 650
 }
 Game.COLORS = ['blue', 'purple', 'navy'];
 Game.ARROWS = ['left', 'up', 'down', 'right'];
 Game.ARROW_COORDS = {
   "left" : {
-    x: 250,
+    x: 50,
     y: 550
   },
   "up" : {
-    x: 400,
+    x: 200,
     y: 550
   },
   "down" : {
-    x: 550,
+    x: 350,
     y: 550
   },
   "right" : {
-    x: 700,
+    x: 500,
     y: 550
   }
 }

@@ -8,5 +8,8 @@
     "start": "webpack --watch --mode=development"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "web-audio-beat-detector": "^7.0.64"
+  }
 }

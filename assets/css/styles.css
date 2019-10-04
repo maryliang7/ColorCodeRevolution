@@ -2,13 +2,19 @@ body {
   position: relative;
   top: 0;
   left: 0;
+  display: flex;
+  color: white;
+}
+
+.main {
+  display: flex;
 }
 
 #bg-vid {
   z-index: 0;
   position: absolute;
-  top: -10px;
-  left: -10px;
+  top: 0px;
+  left: 0px;
   height: 100vh;
   width: 100%;
   min-width: 1445px;
@@ -16,11 +22,12 @@ body {
   object-fit: cover;
 }
 
+
 .background {
   z-index: 1;
   position: absolute;
-  top: -8px;
-  left: -8px;
+  top: 0px;
+  left: 0px;
   height: 100vh;
   width: 100vw;
   min-width: 1445px;
@@ -28,12 +35,96 @@ body {
   background: rgba(42, 45, 55, 0.6);
 }
 
+.left-content {
+  width: 24%;
+  min-width: 340px;
+  z-index: 3;
+  padding: 20px 20px 20px 50px;
+  font-family: 'Varela Round', sans-serif;
+}
+
+.left-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  cursor: pointer;
+}
+
+.fa-volume-up,
+.fa-volume-off {
+  font-size: 22px;
+}
+
+#change-bg {
+  height: 25px;
+  color: white;
+  font-weight: 600;
+  border: 1px solid white;
+  z-index: 3;
+  padding: 0px 7px;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+.score-box {
+  display: flex;
+  flex-direction: row;
+  font-size: 24px;
+}
+
+
+.right-content {
+  width: 24%;
+  min-width: 300px;
+  z-index: 3;
+  padding: 40px 20px 20px 20px;
+  font-family: 'Varela Round', sans-serif;
+}
+
+.game-play {
+  text-align: center;
+}
+
+.game-play h2 {
+  border-bottom: 2px solid white;
+}
+
+.instructions,
+.controls {
+  margin-top: 20px;
+  color: lightgray;
+}
+
+.instructions p,
+.controls p {
+  font-size: 20px;
+  color: white;
+}
+
+.link-icons {
+  position: absolute;
+  top: 45px;
+  left: 1300px;
+}
+.link-icons i{
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+
 .body-content {
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   z-index: 3;
 }
+
 
 .header {
   margin: auto;
@@ -41,6 +132,7 @@ body {
 }
 
 .header h1 {
+  margin-top: 20px;
   z-index: 3;
   color: white;
   font-family: 'Fredoka One', cursive;
@@ -56,13 +148,23 @@ body {
 
 }
 
-body img {
+body img,
+.hidden {
   display: none;
 }
 
 
 .canvas canvas {
   /* border: 1px solid white; */
+}
+
+footer {
+  z-index: 3;
+  color: white;
+  position: absolute;
+  bottom: -60px;
+  left: 600px;
+  font-family: 'Varela Round', sans-serif;
 }
 
 @media(min-width: 1445px) {

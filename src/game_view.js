@@ -7,7 +7,7 @@ export default class Gameview {
     this.ctx = ctx;
 
     // this.menu = new Menu()
-    this.game = new Game()
+    this.game = new Game(1,2,this.ctx);
     new InputHandler(this.game.staticArrows, this.game, this.ctx);
     this.lastTime = 0;
   }
