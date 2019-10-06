@@ -44,6 +44,7 @@ export default class InputHandler {
         case 32:
           // debugger
           game.pause();
+          game.music.toggleSong()
           break;
       }
     })

@@ -28,10 +28,10 @@ export default class Arrow {
       case "up":
         ctx.beginPath();
         ctx.fillStyle = this.rgbColors[this.color];
-        ctx.moveTo(this.start + 40, this.vertHeight);
-        ctx.lineTo(this.start + 8, this.vertHeight + 54);
-        ctx.lineTo(this.start + 40, this.vertHeight + 35);
-        ctx.lineTo(this.start + 72, this.vertHeight + 54);
+        ctx.moveTo(this.start + 37, this.vertHeight);
+        ctx.lineTo(this.start + 5, this.vertHeight + 54);
+        ctx.lineTo(this.start + 37, this.vertHeight + 35);
+        ctx.lineTo(this.start + 70, this.vertHeight + 54);
         ctx.closePath();
         ctx.fill();
         ctx.lineWidth = 2;
@@ -41,10 +41,10 @@ export default class Arrow {
       case "down":
         ctx.beginPath();
         ctx.fillStyle = this.rgbColors[this.color];
-        ctx.moveTo(this.start + 40, this.vertHeight + 54);
-        ctx.lineTo(this.start + 8, this.vertHeight);
-        ctx.lineTo(this.start + 40, this.vertHeight + 20);
-        ctx.lineTo(this.start + 72, this.vertHeight);
+        ctx.moveTo(this.start + 37, this.vertHeight + 54);
+        ctx.lineTo(this.start + 5, this.vertHeight);
+        ctx.lineTo(this.start + 37, this.vertHeight + 20);
+        ctx.lineTo(this.start + 70, this.vertHeight);
         ctx.closePath();
         ctx.fill();
         ctx.lineWidth = 2;
@@ -69,10 +69,10 @@ export default class Arrow {
 
   move(deltaTime) {
     if (!deltaTime) return;
-    this.horiHeight += 60 / deltaTime;
-    this.vertHeight += 60 / deltaTime;
+    this.horiHeight += 50 / deltaTime;
+    this.vertHeight += 50 / deltaTime;
 
-    if (this.horiHeight > 650 || this.vertHeight > 650) {
+    if (this.horiHeight > 750 || this.vertHeight > 750) {
       this.remove(this);
       this.game.missed();
     }

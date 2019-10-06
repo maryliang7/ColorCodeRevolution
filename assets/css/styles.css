@@ -8,6 +8,7 @@ body {
 
 .main {
   display: flex;
+  width: 100%;
 }
 
 #bg-vid {
@@ -74,55 +75,13 @@ body {
   font-size: 24px;
 }
 
-
-.right-content {
-  width: 24%;
-  min-width: 300px;
-  z-index: 3;
-  padding: 40px 20px 20px 20px;
-  font-family: 'Varela Round', sans-serif;
-}
-
-.game-play {
-  text-align: center;
-}
-
-.game-play h2 {
-  border-bottom: 2px solid white;
-}
-
-.instructions,
-.controls {
-  margin-top: 20px;
-  color: lightgray;
-}
-
-.instructions p,
-.controls p {
-  font-size: 20px;
-  color: white;
-}
-
-.link-icons {
-  position: absolute;
-  top: 45px;
-  left: 1300px;
-}
-.link-icons i{
-  font-size: 30px;
-  color: white;
-  cursor: pointer;
-  margin-left: 10px;
-  margin-bottom: 10px;
-}
-
-
 .body-content {
   width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   z-index: 3;
+  /* position: relative; */
 }
 
 
@@ -149,14 +108,63 @@ body {
 }
 
 body img,
-.hidden {
+.hidden,
+.music {
   display: none;
 }
+
 
 
 .canvas canvas {
   /* border: 1px solid white; */
 }
+
+
+
+.right-content {
+  width: 24%;
+  min-width: 300px;
+  z-index: 3;
+  padding: 40px 20px 20px 20px;
+  font-family: 'Varela Round', sans-serif;
+  position: relative;
+}
+
+.game-play {
+  text-align: center;
+}
+
+.game-play h2 {
+  border-bottom: 2px solid white;
+}
+
+.instructions,
+.controls {
+  margin-top: 20px;
+  color: lightgray;
+}
+
+.instructions p,
+.controls p {
+  font-size: 20px;
+  color: white;
+}
+
+.link-icons {
+  position: absolute;
+  top: 45px;
+  left: 150px;
+}
+.link-icons i{
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+
+
 
 footer {
   z-index: 3;
@@ -172,11 +180,20 @@ footer {
   .background {
     height: 100vh;
     width: 100%;
-    min-width: 1975px;
+    min-width: 1925px;
     min-height: 1000px;
+  }
+
+  .header h1 {
+    margin-top: 40px;
   }
 
   .canvas canvas {
     margin-top: 50px;
+  }
+
+  footer {
+  left: 850px;
+
   }
 }
