@@ -15,7 +15,7 @@ export default class Game {
     this.gameSet = gameSet;
     this.arrows = []
     this.staticArrows = new StaticArrow(Game.ARROW_COORDS, this);
-    // this.effects = new Effects();
+    this.effects = new Effects(Game.ARROW_COORDS, this);
     // this.music = new Music(1, this);
     this.gamestate = STATE.START;
     this.start()
@@ -46,7 +46,7 @@ export default class Game {
   }
 
   missed() {
-    this.miss = !this.miss
+    this.effects.toggleMiss();
   }
 
   draw(ctx) {
@@ -56,6 +56,7 @@ export default class Game {
       obj.draw(ctx);
     });
 
+    
     if (this.gamestate === STATE.START) {
       ctx.font = "30px Mitr";
       ctx.fillStyle = "white";
@@ -63,14 +64,11 @@ export default class Game {
       return;
     } 
 
-    let image;
-    if (this.miss) {
-      image = document.getElementById('miss-arrow');
-      // this.miss = !this.miss;
-    } else {
-      image = document.getElementById('arrow');
+    if (!this.arrows.length) {
+      ctx.font = "50px Mitr";
+      ctx.fillStyle = "white";
+      ctx.fillText(`Your Score: ${this.currentScore}`, 100, 225);
     }
-    ctx.drawImage(image, 295, 225, 75, 75);
 
   }
 
@@ -86,6 +84,7 @@ export default class Game {
               (arrow.horiHeight > 540 && arrow.horiHeight < 635) &&
               (keys[Game.CKC[arrow.color]] === true)) {
                 this.remove(arrow);
+                this.effects.changeHit('left');
                 this.updateScore(arrow.horiHeight - 540);
           } 
         });
@@ -96,6 +95,7 @@ export default class Game {
               (arrow.vertHeight > 510 && arrow.vertHeight < 600) &&
               (keys[Game.CKC[arrow.color]] === true)) {
                 this.remove(arrow);
+                this.effects.changeHit('up');
                 this.updateScore(arrow.horiHeight - 535);
           } 
         });
@@ -106,6 +106,7 @@ export default class Game {
               (arrow.vertHeight > 515 && arrow.vertHeight < 610) && 
               (keys[Game.CKC[arrow.color]] === true)) {
                 this.remove(arrow);
+                this.effects.changeHit('down');
                 this.updateScore(arrow.vertHeight - 520);
           } 
         });
@@ -116,6 +117,7 @@ export default class Game {
               (arrow.horiHeight > 540 && arrow.horiHeight < 635) &&
               (keys[Game.CKC[arrow.color]] === true)) {
                 this.remove(arrow);
+                this.effects.changeHit('right');
                 this.updateScore(arrow.horiHeight - 540);
           } 
         });
@@ -126,10 +128,13 @@ export default class Game {
   updateScore(accuracy) {
     if (accuracy > 45 && accuracy < 55){
       this.currentScore += 100;
+      this.effects.changeMessage('Perfect!')
     } else if (accuracy > 30 && accuracy < 70) {
       this.currentScore += 75;
+      this.effects.changeMessage('Good')
     } else {
       this.currentScore += 50;
+      this.effects.changeMessage('Okay')
     }
     this.score.innerHTML = this.currentScore;
   }
