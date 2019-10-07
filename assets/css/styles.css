@@ -41,7 +41,7 @@ body {
   min-width: 340px;
   z-index: 3;
   padding: 20px 20px 20px 50px;
-  font-family: 'Varela Round', sans-serif;
+  font-family: 'Mitr', sans-serif;
 }
 
 .left-buttons {
@@ -164,15 +164,13 @@ body img,
 }
 
 
-
-
 footer {
   z-index: 3;
   color: white;
   position: absolute;
   bottom: -60px;
-  left: 600px;
-  font-family: 'Varela Round', sans-serif;
+  left: 615px;
+  font-family: 'Mitr', sans-serif;
 }
 
 @media(min-width: 1445px) {
@@ -193,7 +191,7 @@ footer {
   }
 
   footer {
-  left: 850px;
+    left: 850px;
 
   }
 }

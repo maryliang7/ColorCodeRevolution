@@ -30,7 +30,6 @@ export default class Gameview {
     this.lastTime = time;
 
     requestAnimationFrame(this.animate.bind(this));
-
   }
 
 

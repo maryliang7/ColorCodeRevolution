@@ -1,6 +1,7 @@
 import StaticArrow from "./static_arrow";
 import Arrow from './arrow';
 import Music from './music'
+import Effects from "./effects";
 
 const STATE = {
   START: 0,
@@ -14,7 +15,8 @@ export default class Game {
     this.gameSet = gameSet;
     this.arrows = []
     this.staticArrows = new StaticArrow(Game.ARROW_COORDS, this);
-    this.music = new Music(1, this);
+    // this.effects = new Effects();
+    // this.music = new Music(1, this);
     this.gamestate = STATE.START;
     this.start()
   }
@@ -55,7 +57,7 @@ export default class Game {
     });
 
     if (this.gamestate === STATE.START) {
-      ctx.font = "30px Varela Round";
+      ctx.font = "30px Mitr";
       ctx.fillStyle = "white";
       ctx.fillText("Press SPACEBAR to start", 130, 225);
       return;
@@ -73,7 +75,7 @@ export default class Game {
   }
 
   allObjects() {
-    return this.arrows.concat(this.staticArrows)
+    return this.arrows.concat(this.staticArrows, this.effects)
   }
 
   checkTarget(arrowType, keys) {

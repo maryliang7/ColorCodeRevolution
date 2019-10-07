@@ -6,7 +6,6 @@ export default class InputHandler {
       90: false,
     }
     document.addEventListener("keydown", event => {
-      // debugger;
       switch (event.keyCode) {
         case 188:
           staticA.pressDown("left");
@@ -34,22 +33,26 @@ export default class InputHandler {
           break;
         case 67:
           this.keys[67] = true;
+          staticA.pressDownColor("blue");
+          staticA.changeCurrentColor('blue');
           break;
         case 88:
           this.keys[88] = true;
+          staticA.pressDownColor("purple");
+          staticA.changeCurrentColor('purple');
           break;
         case 90:
           this.keys[90] = true;
+          staticA.pressDownColor("navy");
+          staticA.changeCurrentColor('navy');
           break;
         case 32:
-          // debugger
           game.pause();
           game.music.toggleSong()
           break;
       }
     })
     document.addEventListener("keyup", event => {
-      // debugger
       switch (event.keyCode) {
         case 188:
           staticA.pressUp("left");
@@ -65,12 +68,18 @@ export default class InputHandler {
           break; 
         case 67:
           this.keys[67] = false;
+          staticA.changeCurrentColor(false);
+          staticA.pressUp("all");
           break;
         case 88:
           this.keys[88] = false;
+          staticA.changeCurrentColor(false);
+          staticA.pressUp("all");
           break;
         case 90:
           this.keys[90] = false;
+          staticA.changeCurrentColor(false);
+          staticA.pressUp("all");
           break;
       }
     })

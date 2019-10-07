@@ -13,7 +13,7 @@ export default class Music {
     })
 
     this.muteButton.onclick = function toggleMute() {
-      debugger
+      // debugger
 
       if (!this.music.muted) {
         this.muteButton.classList.remove("fa-volume-off");
