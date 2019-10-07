@@ -98,6 +98,104 @@ body {
   font-size: 42px;
 }
 
+.start-screen {
+  position: absolute;
+  top: 125px;
+  left: -200px;
+  font-family: 'Fredoka One', cursive;
+  color: rgb(42, 45, 55);
+  height: 500px;
+  width: 800px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.start-content {
+  height: 100%;
+  width: 100%;
+  border: 2px solid rgb(42, 45, 55);
+  border-radius: 10px;
+  display: flex;
+}
+
+.start-keys {
+  width: 50%;
+  margin: 15px 10px;
+  border-right: 2px solid rgb(42, 45, 55);
+}
+
+.start-keys h3 {
+  margin-bottom: 10px;
+}
+
+
+.start-keys h4 {
+  margin: 15px 0px 10px 0px;
+}
+
+.start-keys img {
+  width: 240px;
+}
+
+.arrow-keys-box,
+.color-keys-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.arrow-keys-box img{
+  margin-right: 10px;
+}
+.color-keys-box {
+  margin-left: 15px;
+}
+
+.color-keys-box img {
+  margin-left: 15px;
+}
+
+.start-settings {
+  width: 50%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+
+  padding-top: 15px;
+  font-size: 18px;
+}
+
+.start-settings h3 {
+  font-size: 30px;
+  margin-left: 25%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+.start-colors {
+  margin-top: 10px;
+}
+.start-settings label {
+  margin-bottom: 15px;
+}
+
+#start-game {
+  font-family: 'Fredoka One', cursive;
+  font-size: 16px;
+  background-color: rgb(42, 45, 55);
+  color: rgb(245, 250, 255);
+  border-radius: 5px;
+  width: 110px;
+  padding: 5px 5px;
+  text-align: center;
+  margin-left: 35%;
+  margin-top: 20px;
+}
+
+
+
 .canvas {
   margin: auto;
   z-index: 3;
@@ -107,7 +205,7 @@ body {
 
 }
 
-body img,
+.hidden-images,
 .hidden,
 .music {
   display: none;
@@ -168,7 +266,7 @@ footer {
   z-index: 3;
   color: white;
   position: absolute;
-  bottom: -60px;
+  bottom: -50px;
   left: 615px;
   font-family: 'Mitr', sans-serif;
 }
@@ -179,11 +277,15 @@ footer {
     height: 100vh;
     width: 100%;
     min-width: 1925px;
-    min-height: 1000px;
+    min-height: 900px;
   }
 
   .header h1 {
     margin-top: 40px;
+  }
+
+  .start-screen {
+    top: 200px;
   }
 
   .canvas canvas {
@@ -192,6 +294,6 @@ footer {
 
   footer {
     left: 850px;
-
+    bottom: -100px;
   }
 }

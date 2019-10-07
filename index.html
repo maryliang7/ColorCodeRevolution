@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+      <link rel="stylesheet" href="./assets/css/reset.css">
+      <link rel="stylesheet" href="./assets/css/styles.css">
+      <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Mitr&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css"
+        integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+    </meta>
+  </head>
+
+  <body>
+    <script src="./dist/main.js"></script>
+    <div class="background"></div>
+    <video id="bg-vid" autoplay muted loop>
+      Your browser does not support the video tag.
+    </video>
+    <div class="hidden-images">
+      <img id="left-static-arrow" src="./assets/images/left-static-arrow.png">
+      <img id="up-static-arrow" src="./assets/images/up-static-arrow.png">
+      <img id="down-static-arrow" src="./assets/images/down-static-arrow.png">
+      <img id="right-static-arrow" src="./assets/images/right-static-arrow.png">
+    </div>
+    <div class="music">
+      <audio id="audio">
+        
+      </audio>
+    </div>
+    <div class="main">
+      <div class="left-content">
+        <div class="left-buttons">
+          <button id="change-bg"><i class="fas fa-desktop"></i></button>
+          <i id="volume-button" class="fas fa-volume-up"></i>
+        </div>
+        <div class="score-box">
+          <p>Score:&nbsp;&nbsp;</p>
+          <p id="score">0</p>
+        </div>
+      </div>
+      <div class="body-content">
+        <div class="canvas">
+          <div class="header">
+            <h1>Color Code Revolution</h1>
+
+            <div id="start-screen" class="start-screen">
+              <div class="start-content">
+                <div class="start-keys">
+                  <h3>How to Play</h3>
+                  <div class="start-instructions">
+                    <li>Hit the keys when the arrows reach the bottom. Be sure to match the colors and arrows!</li>
+                    <li>Pressing down more than one color key will not register a hit.</li>
+                    <li>Toggle background and sound in upper left hand corner!</li>
+                  </div>
+                  <h4>Controls:</h4>
+                  <div class="arrow-keys-box">
+                    <img id="arrow-keys" src="./assets/images/arrow-keys.png">
+                    <p>Arrow Keys</p>
+                  </div>
+                  <div class="color-keys-box">
+                    <p>Color Keys</p>
+                    <img id="color-keys" src="./assets/images/color-keys.png">
+                  </div>
+                </div>
+                <div class="start-settings">
+                  <h3>Game Settings</h3>
+                  <label class="start-colors"> Number of Colors:&nbsp;
+                    <br>
+                    <input type="radio" name="numColors" value=2 checked> 2<br>
+                    <input type="radio" name="numColors" value=3> 3<br>
+                  </label>
+                  <label class="start-difficulty"> Difficulty: 
+                    <br>
+                    <input type="radio" name="difficulty" value='beginner'> &nbsp;Beginnner<br>
+                    <input type="radio" name="difficulty" value='easy' checked> &nbsp;Easy<br>
+                    <input type="radio" name="difficulty" value='medium'> &nbsp;Medium<br>
+                    <input type="radio" name="difficulty" value='hard'> &nbsp;Hard<br>
+                    <input type="radio" name="difficulty" value='very hard'> &nbsp;VERY Hard<br>
+                  </label>
+                  <label class="start-song"> Choose a Song:&nbsp;
+                    <select id="song-choices" name="songs">
+                      <option value="kiss-and-makeup.mp3">Kiss and Makeup - Dua Lipa, BLACKPINK</option>
+                      <option value="boombayah.mp3">BOOMBAYAH - BLACKPINK</option>
+                      <option value="kill-this-love.mp3">Kill This Love - BLACKPINK</option>
+                      <option value="ddd-remix.mp3">DDU-DU DDU-DU REMIX - BLACKPINK</option>
+                    </select>
+                  </label>
+                  <button id="start-game">Start Game</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <canvas id="game-canvas" height="650" width="625"></canvas>
+        </div>
+      </div>
+      <div class="right-content">
+        <div class="link-icons">
+          <i class="fab fa-github"><a href="https://github.com/maryliang7"></a></i>
+          <i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/mary-liang-4455b7194/"></a>
+        </div>
+      </div>
+    </div>
+  </body>
+  <footer>
+    <small>&copy Copyright 2019, Mary Liang</small>
+  </footer>
+
+</html>

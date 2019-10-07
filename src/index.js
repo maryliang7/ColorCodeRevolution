@@ -7,10 +7,23 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   let canvas = document.getElementById("game-canvas");
   let ctx = canvas.getContext("2d");
-  let ccr = new GameView(ctx);
-  ccr.start();
-  window.ctx = ctx;
-  window.ccr = ccr;
+  let startButton = document.getElementById('start-game');
+  startButton.onclick = function startGame() {
+    let startModal = document.getElementById('start-screen');
+    startModal.classList.add('hidden');
+    let songChoices = document.getElementById('song-choices');
+
+    let options = {
+      numCol: document.querySelector('input[name="numColors"]:checked').value,
+      level: document.querySelector('input[name="difficulty"]:checked').value,
+      song: songChoices.options[songChoices.selectedIndex].value
+    }
+    
+    let ccr = new GameView(ctx, options);
+    ccr.start();
+    window.ctx = ctx;
+    window.ccr = ccr;
+  }
 });
 
 function changeVideo() {

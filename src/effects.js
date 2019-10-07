@@ -76,6 +76,5 @@ export default class Effects {
       ctx.stroke();
       this.checkCounter(this.hit);
     }
- 
   }
 }

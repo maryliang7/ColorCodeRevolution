@@ -16,25 +16,25 @@ export default class StaticArrow {
   }
 
   pressDownColor(color) {
-    this.leftImage.src = `../assets/images/${color}-left-circle.png`;
-    this.upImage.src = `../assets/images/${color}-up-circle.png`;
-    this.downImage.src = `../assets/images/${color}-down-circle.png`;
-    this.rightImage.src = `../assets/images/${color}-right-circle.png`;
+    this.leftImage.src = `./assets/images/${color}-left-circle.png`;
+    this.upImage.src = `./assets/images/${color}-up-circle.png`;
+    this.downImage.src = `./assets/images/${color}-down-circle.png`;
+    this.rightImage.src = `./assets/images/${color}-right-circle.png`;
   }
 
   pressDown(arrow) {
     switch (arrow) {
       case "left":
-        this.leftImage.src = '../assets/images/empty.png';
+        this.leftImage.src = './assets/images/empty.png';
         break;
       case "up":
-        this.upImage.src = '../assets/images/empty.png';
+        this.upImage.src = './assets/images/empty.png';
         break;
       case "down":
-        this.downImage.src = '../assets/images/empty.png';
+        this.downImage.src = './assets/images/empty.png';
         break;
       case "right":
-        this.rightImage.src = '../assets/images/empty.png';
+        this.rightImage.src = './assets/images/empty.png';
         break;
     }
   }
@@ -46,22 +46,22 @@ export default class StaticArrow {
     }
     switch (arrow) {
       case "left":
-        this.leftImage.src = '../assets/images/left-static-arrow.png';
+        this.leftImage.src = './assets/images/left-static-arrow.png';
         break;
       case "up":
-        this.upImage.src = '../assets/images/up-static-arrow.png';
+        this.upImage.src = './assets/images/up-static-arrow.png';
         break;
       case "down":
-        this.downImage.src = '../assets/images/down-static-arrow.png';
+        this.downImage.src = './assets/images/down-static-arrow.png';
         break;
       case "right":
-        this.rightImage.src = '../assets/images/right-static-arrow.png';
+        this.rightImage.src = './assets/images/right-static-arrow.png';
         break;
       case "all":
-        this.leftImage.src = '../assets/images/left-static-arrow.png';
-        this.upImage.src = '../assets/images/up-static-arrow.png';
-        this.downImage.src = '../assets/images/down-static-arrow.png';
-        this.rightImage.src = '../assets/images/right-static-arrow.png';
+        this.leftImage.src = './assets/images/left-static-arrow.png';
+        this.upImage.src = './assets/images/up-static-arrow.png';
+        this.downImage.src = './assets/images/down-static-arrow.png';
+        this.rightImage.src = './assets/images/right-static-arrow.png';
         break;
     }
   }

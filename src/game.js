@@ -11,12 +11,14 @@ const STATE = {
 };
 
 export default class Game {
-  constructor(gameSet) {
-    this.gameSet = gameSet;
+  constructor(options) {
+    this.numCol = options.numCol;
+    this.level = options.level;
+  
     this.arrows = []
     this.staticArrows = new StaticArrow(Game.ARROW_COORDS, this);
     this.effects = new Effects(Game.ARROW_COORDS, this);
-    // this.music = new Music(1, this);
+    this.music = new Music(options.song, this);
     this.gamestate = STATE.START;
     this.start()
   }
@@ -25,6 +27,12 @@ export default class Game {
     this.score = document.getElementById('score');
     this.currentScore = 0;
     this.score.innerHTML = this.currentScore;
+    this.targetTally = {
+      'perfect': 0,
+      'good': 0,
+      'okay': 0,
+      'miss': 0
+    }
     this.miss = false;
   }
 
@@ -32,20 +40,20 @@ export default class Game {
     setInterval(() => {
       if (this.gamestate !== STATE.PLAYING || this.gamestate === STATE.GAMEOVER) return;
       this.createArrow();
-    }, 700)
-
+    }, Game.difficulty[this.level].interval)
   }  
 
   createArrow() {
     let type = Game.ARROWS[Math.floor(Math.random()*4)];
-    let color = Game.COLORS[Math.floor(Math.random()*2)];
-    let arrow = new Arrow(color, type, Game.ARROW_COORDS, Game.COLORS_RGB, this);
+    let color = Game.COLORS[Math.floor(Math.random()*this.numCol)];
+    let arrow = new Arrow(color, type, Game.ARROW_COORDS, Game.COLORS_RGB, this, Game.difficulty[this.level].speed);
 
     this.arrows.push(arrow);
   }
 
   missed() {
     this.effects.toggleMiss();
+    this.targetTally.miss += 1;
   }
 
   draw(ctx) {
@@ -73,6 +81,13 @@ export default class Game {
       ctx.font = "50px Mitr";
       ctx.fillStyle = "white";
       ctx.fillText(`Your Score: ${this.currentScore}`, 100, 225);
+      ctx.font = "20px Mitr";
+      ctx.fillStyle = "white";
+      ctx.fillText(`Perfect: ${this.targetTally.perfect}`, 255, 275);
+      ctx.fillText(`Good: ${this.targetTally.good}`, 255, 295);
+      ctx.fillText(`Okay: ${this.targetTally.okay}`, 255, 315);
+      ctx.fillText(`Miss: ${this.targetTally.miss}`, 255, 335);
+
     }
 
   }
@@ -134,12 +149,15 @@ export default class Game {
     if (accuracy > 45 && accuracy < 55){
       this.currentScore += 100;
       this.effects.changeMessage('Perfect!')
+      this.targetTally.perfect += 1;
     } else if (accuracy > 30 && accuracy < 70) {
       this.currentScore += 75;
       this.effects.changeMessage('Good')
+      this.targetTally.good += 1;
     } else {
       this.currentScore += 50;
       this.effects.changeMessage('Okay')
+      this.targetTally.okay += 1;
     }
     this.score.innerHTML = this.currentScore;
   }
@@ -156,7 +174,6 @@ export default class Game {
   }
 
   pause() {
-    // debugger
     if (this.gamestate != STATE.PLAYING) {
       this.gamestate = STATE.PLAYING;
     } else {
@@ -207,6 +224,10 @@ Game.CKC = {
 } 
 
 Game.difficulty = {
+  'very hard': {
+    interval: 300,
+    speed: 110
+  },
   'hard': {
     interval: 500,
     speed: 90
@@ -218,5 +239,9 @@ Game.difficulty = {
   'easy': {
     interval: 900,
     speed: 50
+  },
+  'beginner': {
+    interval: 1000,
+    speed: 40
   }
 }

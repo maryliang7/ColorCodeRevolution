@@ -53,7 +53,7 @@ export default class InputHandler {
           break;
         case 32:
           game.pause();
-          // game.music.toggleSong()
+          game.music.toggleSong()
           break;
       }
     })

@@ -1,14 +1,11 @@
 import Game from './game';
 import InputHandler from "./input";
 
-
-
 export default class Gameview {
-  constructor(ctx) {
+  constructor(ctx, options) {
     this.ctx = ctx;
 
-    // this.menu = new Menu()
-    this.game = new Game(1);
+    this.game = new Game(options);
     new InputHandler(this.game.staticArrows, this.game);
     this.lastTime = 0;
   }
@@ -31,7 +28,5 @@ export default class Gameview {
 
     requestAnimationFrame(this.animate.bind(this));
   }
-
-
 
 }

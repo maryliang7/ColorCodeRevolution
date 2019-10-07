@@ -1,10 +1,11 @@
 export default class Arrow {
-  constructor (color, type, coords, rgbColors, game) {
+  constructor (color, type, coords, rgbColors, game, speed) {
     this.color = color;
     this.type = type;
     this.coords = coords;
     this.rgbColors = rgbColors;
     this.game = game;
+    this.speed = speed;
     this.start = this.coords[this.type].x;
     this.horiHeight = 50;
     this.vertHeight = 20;
@@ -69,8 +70,8 @@ export default class Arrow {
 
   move(deltaTime) {
     if (!deltaTime) return;
-    this.horiHeight += 70 / deltaTime;
-    this.vertHeight += 70 / deltaTime;
+    this.horiHeight += this.speed / deltaTime;
+    this.vertHeight += this.speed / deltaTime;
 
     if (this.horiHeight > 750 || this.vertHeight > 750) {
       this.remove(this);
