@@ -29,17 +29,16 @@ export default class Game {
   }
 
   addArrows() {
-    // debugger;
     setInterval(() => {
       if (this.gamestate !== STATE.PLAYING || this.gamestate === STATE.GAMEOVER) return;
       this.createArrow();
-    }, 900)
+    }, 700)
 
   }  
 
   createArrow() {
     let type = Game.ARROWS[Math.floor(Math.random()*4)];
-    let color = Game.COLORS[Math.floor(Math.random()*1)];
+    let color = Game.COLORS[Math.floor(Math.random()*2)];
     let arrow = new Arrow(color, type, Game.ARROW_COORDS, Game.COLORS_RGB, this);
 
     this.arrows.push(arrow);
@@ -64,7 +63,13 @@ export default class Game {
       return;
     } 
 
-    if (!this.arrows.length) {
+    if (this.gamestate === STATE.PAUSED) {
+      ctx.font = "40px Mitr";
+      ctx.fillStyle = "white";
+      ctx.fillText("PAUSED", 240, 225);
+    } 
+
+    if (!this.arrows.length && this.gamestate === STATE.GAMEOVER) {
       ctx.font = "50px Mitr";
       ctx.fillStyle = "white";
       ctx.fillText(`Your Score: ${this.currentScore}`, 100, 225);

@@ -3,7 +3,12 @@ export default class InputHandler {
     this.keys = {
       67: false,
       88: false,
-      90: false,
+      90: false
+    }
+    this.keysColor = {
+      67: 'blue',
+      88: 'purple',
+      90: 'navy'
     }
     document.addEventListener("keydown", event => {
       switch (event.keyCode) {
@@ -48,7 +53,7 @@ export default class InputHandler {
           break;
         case 32:
           game.pause();
-          game.music.toggleSong()
+          // game.music.toggleSong()
           break;
       }
     })
@@ -68,19 +73,26 @@ export default class InputHandler {
           break; 
         case 67:
           this.keys[67] = false;
-          staticA.changeCurrentColor(false);
-          staticA.pressUp("all");
           break;
         case 88:
           this.keys[88] = false;
-          staticA.changeCurrentColor(false);
-          staticA.pressUp("all");
           break;
         case 90:
           this.keys[90] = false;
-          staticA.changeCurrentColor(false);
-          staticA.pressUp("all");
           break;
+      }
+      if (this.keys[67] ^ this.keys[88] ^ this.keys[90]) {
+        for (let color in this.keys) {
+          if (this.keys[color]) {
+            staticA.changeCurrentColor(this.keysColor[color]);
+            staticA.pressUp();
+            break;
+          }
+        }
+      }
+      if (!this.keys[67] && !this.keys[88] && !this.keys[90]) {
+        staticA.changeCurrentColor(false);        
+        staticA.pressUp("all");
       }
     })
   }

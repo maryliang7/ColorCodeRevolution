@@ -69,8 +69,8 @@ export default class Arrow {
 
   move(deltaTime) {
     if (!deltaTime) return;
-    this.horiHeight += 50 / deltaTime;
-    this.vertHeight += 50 / deltaTime;
+    this.horiHeight += 70 / deltaTime;
+    this.vertHeight += 70 / deltaTime;
 
     if (this.horiHeight > 750 || this.vertHeight > 750) {
       this.remove(this);
