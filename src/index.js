@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       level: document.querySelector('input[name="difficulty"]:checked').value,
       song: songChoices.options[songChoices.selectedIndex].value
     }
-    
+
     let ccr = new GameView(ctx, options);
     ccr.start();
     window.ctx = ctx;
@@ -29,15 +29,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
 function changeVideo() {
   let video = document.getElementById('bg-vid');
   let source = document.createElement('source');
-  source.setAttribute('src', "file:///Users/maryliang/Desktop/ColorCodeRevolution/assets/videos/yellow-lights.mp4");
+  source.setAttribute('src', "./assets/videos/yellow-lights.mp4");
   video.appendChild(source);
 
   document.getElementById('change-bg').onclick = function changeVid() {
     video.pause();
     if (video.children[0].src.includes("yellow")) {
-      source.setAttribute('src', "file:///Users/maryliang/Desktop/ColorCodeRevolution/assets/videos/purple-wave.mp4");
+      source.setAttribute('src', "./assets/videos/purple-wave.mp4");
     } else {
-      source.setAttribute('src', "file:///Users/maryliang/Desktop/ColorCodeRevolution/assets/videos/yellow-lights.mp4");
+      source.setAttribute('src', "./assets/videos/yellow-lights.mp4");
     }
     video.load();
     video.play();

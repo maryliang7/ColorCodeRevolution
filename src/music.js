@@ -25,7 +25,7 @@ export default class Music {
 
   addSong() {
     let source = document.createElement('source');
-    source.setAttribute('src', `file:///Users/maryliang/Desktop/ColorCodeRevolution/assets/audio/${this.songChoice}`);
+    source.setAttribute('src', `./assets/audio/${this.songChoice}`);
     this.music.appendChild(source);
     this.playing = false;
   }
