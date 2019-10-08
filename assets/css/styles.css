@@ -4,6 +4,7 @@ body {
   left: 0;
   display: flex;
   color: white;
+  background-color: black;
 }
 
 .main {
@@ -23,6 +24,10 @@ body {
   object-fit: cover;
 }
 
+.fab:hover,
+.fas:hover {
+  color: lightgrey;
+} 
 
 .background {
   z-index: 1;
