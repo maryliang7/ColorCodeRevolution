@@ -31,8 +31,12 @@ export default class Game {
       'perfect': 0,
       'good': 0,
       'okay': 0,
-      'miss': 0
+      'miss': 0,
+      'combo': 0,
+      'highCombo': 0
     }
+    this.combo = document.getElementById('combo');
+    this.combo.innerHTML = this.targetTally.combo;
     this.miss = false;
   }
 
@@ -54,6 +58,11 @@ export default class Game {
   missed() {
     this.effects.toggleMiss();
     this.targetTally.miss += 1;
+    if (this.targetTally.combo > this.targetTally.highCombo) {
+      this.targetTally.highCombo = this.targetTally.combo;
+    }
+    this.targetTally.combo = 0;
+    this.combo.innerHTML = this.targetTally.combo;
   }
 
   draw(ctx) {
@@ -83,10 +92,11 @@ export default class Game {
       ctx.fillText(`Your Score: ${this.currentScore}`, 100, 225);
       ctx.font = "20px Mitr";
       ctx.fillStyle = "white";
-      ctx.fillText(`Perfect: ${this.targetTally.perfect}`, 255, 275);
+      ctx.fillText(`Perfect: ${this.targetTally.perfect}`, 250, 275);
       ctx.fillText(`Good: ${this.targetTally.good}`, 255, 295);
       ctx.fillText(`Okay: ${this.targetTally.okay}`, 255, 315);
       ctx.fillText(`Miss: ${this.targetTally.miss}`, 255, 335);
+      ctx.fillText(`Highest Combo: ${this.targetTally.highCombo}`, 210, 355);
 
     }
 
@@ -159,7 +169,9 @@ export default class Game {
       this.effects.changeMessage('Okay')
       this.targetTally.okay += 1;
     }
+    this.targetTally.combo += 1;
     this.score.innerHTML = this.currentScore;
+    this.combo.innerHTML = this.targetTally.combo;
   }
 
   moveObjects(delta) {
