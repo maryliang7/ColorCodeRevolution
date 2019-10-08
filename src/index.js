@@ -1,6 +1,5 @@
-// Entry File
 import GameView from './game_view';
-console.log("webpack is working??")
+
 
 document.addEventListener('DOMContentLoaded', (event) => {
   changeVideo();  
