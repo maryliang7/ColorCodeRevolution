@@ -7,6 +7,7 @@ export default class Music {
     
     this.music.addEventListener("ended", () => {
       this.music.currentTime = 0;
+      this.playing = false;
       game.gameover();
     })
 
