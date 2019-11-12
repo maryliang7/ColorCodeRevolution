@@ -14,7 +14,6 @@ export default class Game {
   constructor(options) {
     this.numCol = options.numCol;
     this.level = options.level;
-  
     this.arrows = []
     this.staticArrows = new StaticArrow(Game.ARROW_COORDS, this);
     this.effects = new Effects(Game.ARROW_COORDS, this);

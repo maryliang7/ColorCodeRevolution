@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   let canvas = document.getElementById("game-canvas");
   let ctx = canvas.getContext("2d");
   let startButton = document.getElementById('start-game');
+
   startButton.onclick = function startGame() {
     let startModal = document.getElementById('start-screen');
     startModal.classList.add('hidden');
@@ -22,6 +23,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
     ccr.start();
     window.ctx = ctx;
     window.ccr = ccr;
+  }
+
+  let restart = document.getElementById('restart-button');
+  restart.onclick = function reload() {
+    location.reload()
   }
 });
 

@@ -61,6 +61,7 @@ body {
 .fa-volume-up,
 .fa-volume-off {
   font-size: 22px;
+  margin-left: 10px;
 }
 
 #change-bg {
@@ -216,6 +217,10 @@ body {
   display: none;
 }
 
+/* .hidden-two {
+  opacity: 0;
+  z-index: -100;
+} */
 
 .right-content {
   width: 24%;
@@ -224,6 +229,7 @@ body {
   padding: 40px 20px 20px 20px;
   font-family: 'Varela Round', sans-serif;
   position: relative;
+  height: 30px;
 }
 
 .game-play {

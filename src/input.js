@@ -60,8 +60,12 @@ export default class InputHandler {
           break;
         case 32:
           event.preventDefault();
-          game.pause();
-          game.music.toggleSong()
+          if (game.gamestate === 3) {
+            location.reload();
+          } else {
+            game.pause();
+            game.music.toggleSong()
+          }
           break;
       }
     })
